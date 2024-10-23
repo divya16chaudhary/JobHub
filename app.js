@@ -9,12 +9,12 @@ import jobRouter from "./routes/jobRoutes.js";
 import { dbConnection } from "./database/dbConnection.js";
 import { errorMiddleware } from "./middlewares/error.js";
 const app = express();
-config({ path: "./config/config.env" });
+config({ path: "./config/config.env" }); // connection with config file
 
 app.use(
   cors({
     origin: [process.env.FRONTEND_URL],
-    method: ["GET", "POST", "DELETE", "PUT"], //middlewares
+    method: ["GET", "POST", "DELETE", "PUT"], //frontend connection 
     credentials: true,
   })
 );
@@ -26,7 +26,7 @@ app.use(
   fileUpload({
     // useTempFiles: true,
     // tempFileDir: "/tmp/",
-    createParentPath: true
+    createParentPath: true //for file upload
   })
 );
 app.use("/api/v1/user", userRouter);
